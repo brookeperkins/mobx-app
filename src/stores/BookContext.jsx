@@ -1,9 +1,11 @@
-import React, { useContext } from 'react';
-import { createBookStore } from './bookStore';
+import React, { createContext, useContext } from 'react';
+import { createBookStore } from './BookStore';
 import { useLocalObservable } from 'mobx-react';
-/* eslint-disable react/prop-types */
 
-const BookContext = ({ children }) => {
+const BookContext = createContext(null);
+
+// eslint-disable-next-line react/prop-types
+export const BookProvider = ({ children }) => {
   const bookStore = useLocalObservable(() => createBookStore());
 
   return (
@@ -13,4 +15,4 @@ const BookContext = ({ children }) => {
   );
 };
 
-export const useBookStore = useContext(BookContext);
+export const useBookStore = () => useContext(BookContext);

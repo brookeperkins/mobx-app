@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
 
 export const createBookStore = () => {
-  return {
+  return ({
     books: [],
     addBook(bookTitle) {
       this.books.push({
@@ -9,8 +9,8 @@ export const createBookStore = () => {
         id: nanoid(),
       });
     },
-    removeBooks(id) {
-      this.books = this.books.filter((books) => books.id !== id);
+    removeBook(id) {
+      this.books = this.books.filter((book) => book.id !== id);
     },
-  };
+  });
 };
